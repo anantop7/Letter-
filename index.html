@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Special Letter</title>
+
+<style>
+body {
+    margin: 0;
+    background: #ffe6f2;
+    font-family: Comic Sans MS, cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.screen {
+    display: none;
+    text-align: center;
+}
+
+.active {
+    display: block;
+}
+
+button {
+    padding: 12px 25px;
+    font-size: 18px;
+    background: hotpink;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+}
+
+.letter {
+    background: #ffd1e8;
+    color: #ff1493;
+    padding: 30px;
+    border-radius: 25px;
+    max-width: 500px;
+    position: relative;
+    font-size: 18px;
+}
+
+.cat {
+    position: absolute;
+    font-size: 35px;
+}
+
+.top { top: -20px; left: 50%; transform: translateX(-50%); }
+.bottom { bottom: -20px; left: 50%; transform: translateX(-50%); }
+.left { left: -20px; top: 50%; transform: translateY(-50%); }
+.right { right: -20px; top: 50%; transform: translateY(-50%); }
+
+#text {
+    white-space: pre-line;
+    min-height: 200px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Screen 1 -->
+<div id="screen1" class="screen active">
+    <h2>😺 A cute cat wants to ask something...</h2>
+    <div style="font-size:80px;">🐱💕</div>
+    <button onclick="openLetter()">Tap on Confirm</button>
+</div>
+
+<!-- Screen 2 -->
+<div id="screen2" class="screen">
+    <div class="letter">
+        <div class="cat top">🐱</div>
+        <div class="cat bottom">😽</div>
+        <div class="cat left">😺</div>
+        <div class="cat right">😻</div>
+
+        <div id="text"></div>
+    </div>
+</div>
+
+<script>
+function openLetter() {
+    document.getElementById("screen1").style.display = "none";
+    document.getElementById("screen2").style.display = "block";
+
+    let msg = `My dear chachu 💖
+
+Its your son Anant.
+
+As you know aap mera kharcha bhi krwadete ho kabhi kabar 😅
+
+Toh please I did all this mehnat to ask you...
+
+Mujhe kharchi toh dedo beech beech me jo kharcha vadate ho voh online kardo.
+
+Paytm to – anantop@fam 🐱💕`;
+
+    let i = 0;
+    let speed = 40;
+
+    function typeEffect() {
+        if (i < msg.length) {
+            document.getElementById("text").innerHTML += msg.charAt(i);
+            i++;
+            setTimeout(typeEffect, speed);
+        }
+    }
+
+    typeEffect();
+}
+</script>
+
+</body>
+</html>
